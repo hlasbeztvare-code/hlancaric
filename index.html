@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jan Lančarič | Senior E-commerce Architect</title>
+    <style>
+        :root { --main-green: #00ff41; --bg-black: #0a0a0a; --dim-gray: #333; }
+        body { background: var(--bg-black); color: var(--main-green); font-family: 'Courier New', Courier, monospace; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
+        .terminal { width: 100%; max-width: 850px; background: #000; padding: 40px; border: 1px solid var(--dim-gray); box-shadow: 0 0 30px rgba(0, 255, 65, 0.15); position: relative; }
+        .cursor { display: inline-block; width: 10px; height: 1.2em; background: var(--main-green); margin-left: 5px; animation: blink 0.8s infinite; vertical-align: middle; }
+        @keyframes blink { 50% { opacity: 0; } }
+        h1 { font-size: 1.4rem; margin: 0 0 25px 0; border-bottom: 1px solid var(--dim-gray); padding-bottom: 10px; letter-spacing: 2px; }
+        .line { margin-bottom: 12px; opacity: 0; animation: fadeIn 0.4s forwards; line-height: 1.5; }
+        .accent { color: #fff; font-weight: bold; }
+        .highlight { color: #ff00ea; }
+        .meta { color: #555; font-size: 0.85rem; margin-top: 30px; border-top: 1px dashed var(--dim-gray); padding-top: 15px; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 600px) { .terminal { padding: 20px; } h1 { font-size: 1.1rem; } .line { font-size: 0.9rem; } }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <h1>[ SYSTEM_STATUS: OPERATIONAL ]</h1>
+        
+        <div class="line" style="animation-delay: 0.3s;">> USER_AUTH: <span class="accent">JAN LANČARIČ</span></div>
+        <div class="line" style="animation-delay: 0.6s;">> ROLE: <span class="accent">SENIOR E-COMMERCE ARCHITECT</span></div>
+        <div class="line" style="animation-delay: 0.9s;">> EXPERIENCE: <span class="accent">14+ YEARS (SINCE 2011)</span></div>
+        
+        <br>
+        <div class="line" style="animation-delay: 1.2s;">> MISSION: <span class="highlight">MAXIMIZING ROAS & SYSTEM EFFICIENCY</span></div>
+        <div class="line" style="animation-delay: 1.5s;">> PROTOCOL: <span class="accent">NO-CALL / ACTION-ONLY / REMOTE DEPLOYMENT</span></div>
+        
+        <br>
+        <div class="line" style="animation-delay: 1.8s;">> ANALYTICS_CORE: [GA4, GTM-SS, SERVER_SIDE_TRACKING]</div>
+        <div class="line" style="animation-delay: 2.1s;">> AD_TECH: [META_CAPI, GOOGLE_ADS, SKLIK_API]</div>
+        <div class="line" style="animation-delay: 2.4s;">> ECOM_STACK: [WOOCOMMERCE_SPECIALIST, ARCHITECT_LEVEL]</div>
+        
+        <br>
+        <div class="line" style="animation-delay: 2.8s;">> <span class="highlight">"Nestavím kampaně. Stavím systémy, které doručují výsledky."</span></div>
+        
+        <div class="meta" style="animation-delay: 3.2s;">
+            [PARTNER_IDENTIFICATION]<br>
+            IČO: 87957167 | STATUS: SENIOR_PARTNER<br>
+            LOCATION: REMOTE_OFFICE <span class="cursor"></span>
+        </div>
+    </div>
+</body>
+</html>
