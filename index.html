@@ -3,92 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jan Lančarič | Technical Audit & E-com Architecture</title>
+    <title>JAN LANČARIČ | E-commerce Architecture</title>
     <style>
-        :root { --text: #d1d1d1; --accent: #666; --bg: #0a0a0a; --border: #1a1a1a; --success: #00ff41; --white: #fff; }
-        body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; margin: 0; padding: 40px; line-height: 1.6; }
-        .wrapper { max-width: 900px; margin: 0 auto; }
-        header { border-bottom: 1px solid var(--border); padding-bottom: 25px; margin-bottom: 45px; display: flex; justify-content: space-between; align-items: flex-end; }
-        h1 { font-size: 1.3rem; font-weight: 600; letter-spacing: 1px; color: var(--white); margin: 0; }
-        .sub { font-size: 0.8rem; color: var(--accent); text-transform: uppercase; font-family: monospace; }
+        :root { --glow: #00ff41; --bg: #050505; --card-bg: #0d0d0d; --text-main: #ffffff; --text-dim: #888; --border: #1a1a1a; }
+        body { background: var(--bg); color: var(--text-main); font-family: 'Inter', -apple-system, sans-serif; margin: 0; padding: 0; line-height: 1.6; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .wrapper { max-width: 900px; width: 95%; padding: 40px; background: #000; border: 1px solid var(--border); box-shadow: 0 0 50px rgba(0, 255, 65, 0.05); }
         
-        section { margin-bottom: 50px; }
-        h2 { font-size: 0.85rem; text-transform: uppercase; color: var(--accent); letter-spacing: 2px; margin-bottom: 25px; border-left: 2px solid #333; padding-left: 15px; }
-        
-        /* Table Style */
-        .deployment-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background: #0d0d0d; border: 1px solid var(--border); }
-        .deployment-table th { text-align: left; padding: 15px 20px; border-bottom: 1px solid var(--border); color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
-        .deployment-table td { padding: 20px; border-bottom: 1px solid var(--border); vertical-align: top; }
-        .tech-col { width: 45%; font-family: monospace; font-size: 0.9rem; color: var(--white); }
-        .human-col { width: 55%; font-size: 0.85rem; color: #999; }
-        .human-col b { color: #eee; display: block; margin-bottom: 5px; }
+        header { border-bottom: 1px solid var(--border); padding-bottom: 30px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: top; }
+        .brand b { display: block; font-size: 1.5rem; letter-spacing: 2px; }
+        .brand span { color: var(--text-dim); font-size: 0.8rem; font-family: monospace; }
+        .seniority { text-align: right; color: var(--glow); font-family: monospace; font-size: 0.85rem; }
 
-        .price-tag { background: #111; border: 1px solid var(--success); padding: 30px; text-align: center; margin-top: 40px; }
-        .price-tag span { display: block; color: var(--accent); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 10px; }
-        .price-tag b { font-size: 2rem; color: var(--white); font-family: monospace; }
-        .price-tag i { display: block; color: var(--success); font-style: normal; font-size: 0.85rem; margin-top: 10px; }
+        .hook { font-size: 1.1rem; color: var(--text-main); margin-bottom: 40px; border-left: 3px solid var(--glow); padding-left: 20px; }
+        .hook i { color: var(--glow); font-style: normal; font-weight: bold; }
 
-        .status-line { font-family: monospace; font-size: 0.8rem; color: var(--accent); margin-top: 20px; text-align: center; }
-        footer { margin-top: 60px; font-size: 0.75rem; color: var(--accent); border-top: 1px solid var(--border); padding-top: 25px; font-family: monospace; }
+        .pipeline-table { width: 100%; border-spacing: 0; margin-bottom: 40px; }
+        .pipeline-table th { text-align: left; color: var(--text-dim); font-size: 0.7rem; text-transform: uppercase; padding: 10px 20px; letter-spacing: 1px; }
+        .pipeline-table td { padding: 25px 20px; border-top: 1px solid var(--border); vertical-align: top; transition: background 0.3s; }
+        .pipeline-table tr:hover td { background: rgba(0, 255, 65, 0.02); }
         
-        @media (max-width: 700px) { .deployment-table, .tech-col, .human-col { display: block; width: 100%; } .deployment-table td { padding: 15px; } }
+        .tech-spec { font-family: monospace; font-size: 0.95rem; color: var(--glow); width: 40%; }
+        .business-value { width: 60%; font-size: 0.9rem; color: var(--text-dim); }
+        .business-value b { color: var(--text-main); display: block; margin-bottom: 5px; }
+
+        .pricing-section { background: var(--card-bg); border: 1px solid var(--glow); padding: 40px; text-align: center; position: relative; overflow: hidden; }
+        .pricing-section::before { content: 'LIMITED_CAPACITY'; position: absolute; top: 10px; right: -30px; transform: rotate(45deg); background: var(--glow); color: #000; font-size: 0.6rem; font-weight: bold; padding: 5px 40px; }
+        .pricing-section span { color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; }
+        .pricing-section .price { font-size: 2.5rem; font-weight: 800; display: block; margin: 10px 0; font-family: monospace; }
+        .pricing-section .terms { font-size: 0.85rem; color: var(--glow); font-family: monospace; }
+
+        .action-bar { margin-top: 30px; display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-dim); font-family: monospace; }
+        footer { margin-top: 50px; text-align: center; font-size: 0.7rem; color: #333; border-top: 1px solid var(--border); padding-top: 20px; letter-spacing: 1px; }
+
+        @media (max-width: 600px) { header { flex-direction: column; } .pipeline-table, .tech-spec, .business-value { display: block; width: 100%; } .pipeline-table td { padding: 15px; } }
     </style>
 </head>
 <body>
     <div class="wrapper">
         <header>
-            <div>
-                <h1>JAN LANČARIČ</h1>
-                <div class="sub">Senior Architecture & Performance | ID: 87957167</div>
+            <div class="brand">
+                <b>JAN LANČARIČ</b>
+                <span>E-COMMERCE ARCHITECT / ID: 87957167</span>
             </div>
-            <div class="sub">Active Since 2011</div>
+            <div class="seniority">
+                [ ESTABLISHED_2011 ]<br>
+                [ REMOTE_ONLY ]
+            </div>
         </header>
 
-        <section>
-            <h2>Strategic Deployment Pipeline</h2>
-            <table class="deployment-table">
-                <thead>
-                    <tr>
-                        <th>Technická specifikace</th>
-                        <th>Business přínos pro klienta</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="tech-col">GTM Server-Side + Cloud Gateway</td>
-                        <td class="human-col"><b>Záchrana 30 %+ dat o prodejích</b><br>Obejdeme AdBlocky a iOS omezení. Uvidíte reálný ROAS, ne odhady.</td>
-                    </tr>
-                    <tr>
-                        <td class="tech-col">Meta CAPI & Google Offline Conversions</td>
-                        <td class="human-col"><b>Brutální přesnost reklamních algoritmů</b><br>Vaše kampaň se učí z reálných nákupů na serveru, ne ze nespolehlivého prohlížeče.</td>
-                    </tr>
-                    <tr>
-                        <td class="tech-col">WooCommerce LCP Refactoring</td>
-                        <td class="human-col"><b>Okamžité zrychlení webu</b><br>Snížíme míru opuštění webu v nákupním košíku. Každá vteřina dolů = peníze navíc.</td>
-                    </tr>
-                    <tr>
-                        <td class="tech-col">GA4 Consent Mode v2 + Custom Schema</td>
-                        <td class="human-col"><b>Právní jistota a modelování dat</b><br>Měříme legálně, přesně a bezpečně. Google vás nebude penalizovat v aukcích.</td>
-                    </tr>
-                    <tr>
-                        <td class="tech-col">Real-time XML API Bridge</td>
-                        <td class="human-col"><b>Nula propáleného budgetu</b><br>Reklamy se vypnou/zapnou samy podle dostupnosti kurzů a kapacity.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        <div class="hook">
+            Váš aktuální funnel pravděpodobně pálí <i>30–40 % rozpočtu</i> na slepých datech a technické latenci. <br>
+            Moje role není "správa reklam", ale <b>architektura zisku</b>.
+        </div>
 
-        <section>
-            <div class="price-tag">
-                <span>Investice do seniorní správy a exekuce</span>
-                <b>45 000 CZK / měsíc</b>
-                <i>(Bez DPH / Fixní cena za doručení 300% efektivity)</i>
-            </div>
-            <div class="status-line">> PROTOCOL: ASYNCHRONOUS_ONLY | NO_CALLS | NO_WASTE</div>
-        </section>
+        <table class="pipeline-table">
+            <thead>
+                <tr>
+                    <th>Technický Protokol</th>
+                    <th>Strategický Výsledek</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tech-spec">GTM Server-Side + ITP Protection</td>
+                    <td class="business-value"><b>Záchrana datových ztrát</b><br>Obejdeme restrikce iOS a prohlížečů. Uvidíte reálnou cestu zákazníka a skutečný ROAS.</td>
+                </tr>
+                <tr>
+                    <td class="tech-spec">Meta CAPI & Google Offline API</td>
+                    <td class="business-value"><b>Přímé krmení algoritmů</b><br>Reklamní systémy dostávají data přímo ze serveru. Cílení se stává nekompromisně přesným.</td>
+                </tr>
+                <tr>
+                    <td class="tech-spec">LCP Optimization (WooCommerce)</td>
+                    <td class="business-value"><b>Odstranění nákupní bariéry</b><br>Každých 100ms načítání navíc je ztráta. Refaktorujeme kód pro bleskový průchod košíkem.</td>
+                </tr>
+                <tr>
+                    <td class="tech-spec">Consent Mode v2 + Modeling</td>
+                    <td class="business-value"><b>Legální převaha v aukcích</b><br>Měříme přesně i bez cookies. Google Vás odmění nižší cenou za proklik (CPC).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="pricing-section">
+            <span>FIXNÍ MĚSÍČNÍ PAUŠÁL ZA EXEKUCI</span>
+            <b class="price">45 000 CZK</b>
+            <div class="terms">> NO_CALLS | > NO_WASTE | > 300%_FOCUS</div>
+        </div>
+
+        <div class="action-bar">
+            <span>READY_TO_DEPLOY</span>
+            <span>DATA_DRIVEN_ONLY</span>
+            <span>ACTIVE_SYSTEM_SINCE_2011</span>
+        </div>
 
         <footer>
-            JAN LANČARIČ / IČO: 87957167 / BUILD: 5.0_PROD / REMOTE_ACCESS_ONLY
+            JAN LANČARIČ / IČO: 87957167 / STRATEGIC_UNIT_2026 / ZERO_FLUFF_POLICY
         </footer>
     </div>
 </body>
