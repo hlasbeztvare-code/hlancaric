@@ -5,70 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jan Lančarič | Technical Audit & E-com Architecture</title>
     <style>
-        :root { --text: #d1d1d1; --accent: #555; --code: #e0e0e0; --bg: #0d0d0d; }
-        body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 40px; line-height: 1.6; }
-        .wrapper { max-width: 800px; margin: 0 auto; }
-        header { border-bottom: 1px solid #222; padding-bottom: 20px; margin-bottom: 40px; }
-        h1 { font-size: 1.2rem; font-weight: 500; letter-spacing: 1px; color: #fff; margin: 0; }
-        .sub { font-size: 0.85rem; color: var(--accent); text-transform: uppercase; margin-top: 5px; }
-        section { margin-bottom: 40px; }
-        h2 { font-size: 0.9rem; text-transform: uppercase; color: var(--accent); letter-spacing: 2px; margin-bottom: 20px; border-left: 2px solid #333; padding-left: 15px; }
+        :root { --text: #d1d1d1; --accent: #666; --code: #fff; --bg: #0a0a0a; --border: #1a1a1a; --success: #00ff41; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; margin: 0; padding: 40px; line-height: 1.6; }
+        .wrapper { max-width: 850px; margin: 0 auto; }
+        header { border-bottom: 1px solid var(--border); padding-bottom: 25px; margin-bottom: 45px; }
+        h1 { font-size: 1.3rem; font-weight: 600; letter-spacing: 1px; color: #fff; margin: 0; }
+        .sub { font-size: 0.85rem; color: var(--accent); text-transform: uppercase; margin-top: 5px; font-family: monospace; }
+        section { margin-bottom: 50px; }
+        h2 { font-size: 0.85rem; text-transform: uppercase; color: var(--accent); letter-spacing: 2px; margin-bottom: 25px; border-left: 2px solid #333; padding-left: 15px; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .card { background: #111; padding: 20px; border: 1px solid #1a1a1a; }
-        .card b { color: #fff; display: block; margin-bottom: 5px; font-size: 0.95rem; }
-        .card p { font-size: 0.85rem; margin: 0; color: #888; }
-        .stats { font-family: 'JetBrains Mono', monospace; color: #fff; font-size: 0.85rem; }
-        .status-dot { display: inline-block; width: 8px; height: 8px; background: #222; border-radius: 50%; margin-right: 10px; }
-        .active { background: #00ff41; box-shadow: 0 0 10px #00ff41; }
-        footer { margin-top: 60px; font-size: 0.8rem; color: var(--accent); border-top: 1px solid #222; padding-top: 20px; }
-        code { font-family: 'JetBrains Mono', monospace; background: #1a1a1a; padding: 2px 6px; border-radius: 3px; color: #fff; font-size: 0.85rem; }
-        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+        .card { background: #111; padding: 25px; border: 1px solid var(--border); position: relative; }
+        .card b { color: #fff; display: block; margin-bottom: 8px; font-size: 1rem; }
+        .card p { font-size: 0.85rem; margin: 0; color: #999; }
+        .stats { font-family: 'JetBrains Mono', monospace; color: #fff; font-size: 0.8rem; margin-bottom: 10px; opacity: 0.7; }
+        
+        /* Checklist Style */
+        .pipeline { background: #0d0d0d; border: 1px solid var(--border); padding: 0; list-style: none; }
+        .pipeline-item { padding: 15px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; font-size: 0.9rem; }
+        .pipeline-item:last-child { border-bottom: none; }
+        .step-num { font-family: monospace; color: var(--accent); margin-right: 15px; font-weight: bold; }
+        .step-content b { color: #eee; display: block; margin-bottom: 3px; }
+        .step-content span { color: #777; font-size: 0.8rem; display: block; }
+        
+        .status-box { font-family: monospace; font-size: 0.8rem; color: var(--success); margin-top: 40px; border: 1px solid #003311; padding: 15px; background: rgba(0, 255, 65, 0.02); }
+        footer { margin-top: 60px; font-size: 0.75rem; color: var(--accent); border-top: 1px solid var(--border); padding-top: 25px; font-family: monospace; }
+        code { font-family: monospace; background: #1a1a1a; padding: 2px 5px; border-radius: 3px; color: #fff; }
+        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .wrapper { padding: 10px; } }
     </style>
 </head>
 <body>
     <div class="wrapper">
         <header>
             <h1>JAN LANČARIČ</h1>
-            <div class="sub">Senior E-commerce Architect & Data Strategist | ID: 87957167</div>
+            <div class="sub">Senior Architecture & Performance Engineering | ID: 87957167</div>
         </header>
 
         <section>
-            <h2>Core Competencies</h2>
+            <h2>Technical Strategy</h2>
             <div class="grid">
                 <div class="card">
-                    <b>Tracking & Analytics</b>
-                    <p>Implementace <code>GTM Server-Side</code>, <code>Meta CAPI</code> a <code>GA4 Custom Events</code>. Eliminace datových ztrát (iOS 14.5+).</p>
+                    <b>Data Integrity</b>
+                    <p>Nasazení <code>Server-Side GTM</code> a <code>Conversion API</code>. Obnova až 35 % ztracených dat způsobených blokátory a ITP.</p>
                 </div>
                 <div class="card">
-                    <b>E-com Infrastructure</b>
-                    <p>Optimalizace <code>WooCommerce</code> backendu, refaktoring konverzních cest a automatizace XML feedů.</p>
+                    <b>E-com Performance</b>
+                    <p>Optimalizace LCP (Core Web Vitals) na WooCommerce. Redukce JS latence a refaktoring nákupního procesu.</p>
                 </div>
             </div>
         </section>
 
         <section>
-            <h2>Selected Deployments</h2>
-            <div class="card" style="margin-bottom: 15px;">
-                <div class="stats">PROJECT_ALPHA: INFOPRODUCT_SCALE</div>
-                <p>Kompletní přestavba trackingu pro prodej online kurzů. Výsledek: <b>+140 % měřených konverzí</b> díky eliminaci AdBlocků přes S2S.</p>
-            </div>
-            <div class="card">
-                <div class="stats">PROJECT_BETA: CHECKOUT_OPTIMIZATION</div>
-                <p>Snížení odezvy serveru a redukce JS balastu v nákupním košíku. Výsledek: <b>-18 % bounce rate</b> v posledním kroku funnelu.</p>
+            <h2>Deployment Pipeline (Audit Checklist)</h2>
+            <div class="pipeline">
+                <div class="pipeline-item">
+                    <div class="step-num">01</div>
+                    <div class="step-content">
+                        <b>Infrastructure Audit</b>
+                        <span>Kontrola GTM kontejneru, GA4 datových schémat a verifikace pixelů.</span>
+                    </div>
+                </div>
+                <div class="pipeline-item">
+                    <div class="step-num 02">02</div>
+                    <div class="step-content">
+                        <b>Tracking Recovery</b>
+                        <span>Implementace Server-Side proxy k eliminaci AdBlocků a zpřesnění ROAS.</span>
+                    </div>
+                </div>
+                <div class="pipeline-item">
+                    <div class="step-num 03">03</div>
+                    <div class="step-content">
+                        <b>Conversion API (CAPI)</b>
+                        <span>Přímé serverové propojení s Metou/Googlem pro maximální signál algoritmům.</span>
+                    </div>
+                </div>
+                <div class="pipeline-item">
+                    <div class="step-num 04">04</div>
+                    <div class="step-content">
+                        <b>Checkout Refactoring</b>
+                        <span>Odstranění technických bariér v košíku. Zrychlení průchodu k platbě.</span>
+                    </div>
+                </div>
+                <div class="pipeline-item">
+                    <div class="step-num 05">05</div>
+                    <div class="step-content">
+                        <b>Scalability & Automation</b>
+                        <span>Příprava feedů a serveru na nárazové kampaně s vysokou návštěvností.</span>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section>
-            <h2>Operational Status</h2>
-            <div class="stats">
-                <div><span class="status-dot active"></span> SYSTEM_READY: Remote Deployment Only</div>
-                <div><span class="status-dot active"></span> PROTOCOL: Asynchronous Execution (No Calls)</div>
-                <div><span class="status-dot active"></span> UPTIME: Active since 2011</div>
-            </div>
-        </section>
+        <div class="status-box">
+            > STATUS: READY_FOR_DEPLOYMENT<br>
+            > UPTIME: ACTIVE_SINCE_2011<br>
+            > POLICY: ASYNCHRONOUS_EXECUTION (NO CALLS)
+        </div>
 
         <footer>
-            JAN LANČARIČ / IČO: 87957167 / ARCHITECTURE_V3.0 / NO_FLUFF_POLICY
+            JAN LANČARIČ / IČO: 87957167 / BUILD_VER: 4.0.2026 / REMOTE_ONLY
         </footer>
     </div>
 </body>
